@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\AMBsessionController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AMBController;
+use App\Http\Controllers\AMBAccountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+#test Ssion
+route ::get('/AMB-Session/get',[AMBsessionController::class,'AMBGetsessionData'])->name('AMBSs.get');
+route ::get('/AMB-Session/set',[AMBsessionController::class,'AMBStoresessionData'])->name('AMBSs.set');
+route ::get('/AMB-Session/del',[AMBsessionController::class,'AMBDeleteSessionData'])->name('AMBSs.del');
 
-Route::get('/login', [AMBController::class, 'showForm']); // Hiển thị form đăng ký
-Route::post('/login', [AMBController::class, 'handlelogin'])->name('login.submit'); // Xử lý đăng ký
+
+#Account
+route::get('/AMB-login',[AMBAccountController::class,'AMBLogin'])->name('AMBAccount.AMBLogin');
+route::post('/AMB-login',[AMBAccountController::class,'AMBLoginsubmit'])
+->name('AMBAccount.AMBLoginsubmit');
