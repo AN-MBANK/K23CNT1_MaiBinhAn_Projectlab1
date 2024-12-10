@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\AMBsessionController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AMBAccountController;
+use app\Http\Controllers\MHcontroller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,14 +16,8 @@ use App\Http\Controllers\AMBAccountController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-#test Ssion
-route ::get('/AMB-Session/get',[AMBsessionController::class,'AMBGetsessionData'])->name('AMBSs.get');
-route ::get('/AMB-Session/set',[AMBsessionController::class,'AMBStoresessionData'])->name('AMBSs.set');
-route ::get('/AMB-Session/del',[AMBsessionController::class,'AMBDeleteSessionData'])->name('AMBSs.del');
-
-
-#Account
-route::get('/AMB-login',[AMBAccountController::class,'AMBLogin'])->name('AMBAccount.AMBLogin');
-route::post('/AMB-login',[AMBAccountController::class,'AMBLoginsubmit'])
-->name('AMBAccount.AMBLoginsubmit');
+#mh
+route::get('/mh',[MHcontroller::class,'MHList'])->name('mbamh.MHList');
+route::get('/mh/detail/{mamh}',[MHcontroller::class,'mbamh'])->name('mbamh.mbamh');
+route::get('/mh/edit/{mamh}',[MHcontroller::class,'mhedit'])->name('mbamh.mhedit');
+route::get('/mh/edit',[MHcontroller::class,'mheditsubmit'])->name('mbamh.mheditsubmit');
