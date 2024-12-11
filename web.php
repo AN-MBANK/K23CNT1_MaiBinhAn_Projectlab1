@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AMBsessionController;
+use App\Http\Controllers\AMBKHOAcontroller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AMBAccountController;
+use App\Http\Controllers\AMBMHcontroller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +18,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-#test Ssion
-route ::get('/AMB-Session/get',[AMBsessionController::class,'AMBGetsessionData'])->name('AMBSs.get');
-route ::get('/AMB-Session/set',[AMBsessionController::class,'AMBStoresessionData'])->name('AMBSs.set');
-route ::get('/AMB-Session/del',[AMBsessionController::class,'AMBDeleteSessionData'])->name('AMBSs.del');
 
 
-#Account
-route::get('/AMB-login',[AMBAccountController::class,'AMBLogin'])->name('AMBAccount.AMBLogin');
-route::post('/AMB-login',[AMBAccountController::class,'AMBLoginsubmit'])
-->name('AMBAccount.AMBLoginsubmit');
+#khoa
+route::get('/khoa',[AMBKHOAcontroller::class,'amblist'])->name('ambkhoa.amblist');
+
+#khoa - detail
+
+route::get('/khoa/detail/{makhoa}',[AMBKHOAcontroller::class,'ambkhoa'])->name('ambkhoa.ambkhoa');
+
+#khoa - edit
+route::get('/khoa/edit/{makhoa}',[AMBKHOAcontroller::class,'ambedit'])->name('ambkhoa.ambedit');
+route::get('/khoa/edit',[AMBKHOAcontroller::class,'ambeditsubmit'])->name('ambkhoa.ambeditsubmit');
+
+# khoa-insert
+route::get('/khoa/ambinsert',[AMBKHOAcontroller::class,'ambinsert'])->name('ambkhoa.ambinsert');
+route::post('/khoa/ambinsert',[AMBKHOAcontroller::class,'ambinsertsubmit'])->name('ambkhoa.ambinsertsubmit');
+# khoa - delete
+route::get('/khoa/delete/{makhoa}',[AMBKHOAcontroller::class,'ambdelete'])->name('ambkhoa.ambdelete');
+#mh
+route::get('/mh',[AMBMHcontroller::class,'mbalist'])->name('mba.mbalist');
